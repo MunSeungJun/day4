@@ -4,16 +4,86 @@
     margin: 0;
     padding: 0;
 }
-.hearder {
-    font-size: 13px;
+a, a:link {
+    text-decoration: none;
+    color: black;
 }
+
 .link-text {
+    font-size: 13px;
     background-color: #f5f5f5;
     padding: 10px;
     text-align: center;
+}
+.link-text a {
+    margin: 0 10px;
 }
 .brand {
     width: 88px;
     height: 100px;
     margin: 20px auto;
+}
+.header-menu {
+    display: flex;
+    justify-content: center;
+}
+.header-menu a {
+    font-size: 14px;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+.header-menu a:hover {
+    background-color: #ffea00;
+    color: black;
+}
+.title {
+    background-color: #ffea00;
+    margin: 30px 0;
+    padding: 15px 0;
+    text-align: center;
+}
+.text-big {
+    font-size: 40px;
+    text-transform: uppercase;
+}
+.text-small {
+    font-size: 16px;
+}
+
+.main form{
+    max-width: 600px;
+    margin: 0 auto;
+}
+#sign-table {
+    width: 100%;
+}
+.basic-info table {
+    width: 100%;
+}
+#sign-table caption {
+    border-bottom: 1px solid black;
+    font-size: 18px;
+    padding: 10px 0;
+}
+.basic-info caption{
+    border-bottom: 1px solid black;
+    font-size: 18px;
+    padding: 10px 0;
+}
+
+
+.footer{
+    margin: 20px;
+    text-align: center;
+}
+.sub-menu{
+    font-size: 14px;
+}
+.site-info{
+    font-size: 13px;
+}
+.copyright{
+    font-size: 12px;
+    background-color: #f1f1f1;
 }
