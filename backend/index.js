@@ -1,5 +1,6 @@
 import express, { json } from "express"
 import path from "path"
+import cookieParser from "cookie-parser";
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -36,6 +37,7 @@ const userSchema = new mongoose.Schema({
   },
   id:{
     type: String,
+    unique: true,
     required: true,
     lowercase: true
   },
@@ -63,7 +65,7 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User',userSchema)
 
-
+app.use(cookieParser())
 app.use(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -88,16 +90,57 @@ app.post('/signup', async (req, res) => {
       if(!user){
         throw new Error("사용자 생성 실패")
       }
-      res.status(200).json(user)
-      // res.send("회원가입 성공.");
+      res.send('<script>alert("회원가입 성공, 홈으로 이동합니다");location.href="/";</script>');
     })
   } catch(err){
     console.log(err)
     // throw new Error("회원가입 오류")
   } 
 })
-app.get('/signin', (req, res) => {
-  res.send("/signin 페이지를 보고 계십니다.")
+app.post('/signin', async (req, res) => {
+  try{
+    const {user_id, user_pw} = req.body;
+    const foundUser = await User.find({id:user_id})
+    if (foundUser.length ==0){
+      res.status(401).json({
+        status: 'fail',
+        message: "사용자가 존재하지 않습니다"
+      })
+    }
+    const match = await bcrypt.compare(user_pw, foundUser[0].pw)
+    if(match){
+      //cookie 굽기
+      res.cookie('login_user', foundUser[0].id, {
+        httpOnly: true,
+        maxAge: 60000
+      })
+      res.status(200).json({
+        status: 'success',
+        message: '로그인 성공' 
+      })
+    } else{
+      res.status(200).json({
+        status: 'fail',
+        message: '로그인 실패'
+      })
+    }
+  } catch (err){
+    console.log(err)
+  }
+})
+app.get("/bucket", (req, res) => {
+  try{
+    if (req.cookies.login_user) {
+      res.send("쿠키정보가 존재합니다")
+    } else {
+      res.status(401).json({
+        status: 'fail',
+        message: "로그인이 필요합니다"
+      })
+    }
+  } catch(err){
+    console.log(err)
+  }
 })
 
 
