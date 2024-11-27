@@ -22,12 +22,17 @@
         <a href="#">sales</a>
         <a href="#">event</a>
       </div>
+      <div class="title">
+        <p class="text-big">login</p>
+        <p class="text-small">회원로그인</p>
+      </div>
     </div>
     <!-- /.hearder -->
     <div class="main">
-      <form  method="post" action="http://localhost:3000/signup">
-        <div class="join-type">
+      <form  method="post" action="http://localhost:3000/signin" autocomplete="off" id="signin-form">
+        <div>
           <table>
+            <caption>가입구분</caption>
             <tr>
               <th>회원구분</th>
               <td>
@@ -55,8 +60,10 @@
             </tr> -->
           </table>
         </div>
-        <input type="submit" value="로그인" />
-        <input type="reset" value="취소" />
+        <div>
+          <input type="submit" value="로그인" />
+          <input type="reset" value="취소" />
+        </div>
       </form>
     </div>
     <!-- /.main -->
@@ -67,9 +74,9 @@
         <a href="#">이용안내</a>
         <a href="#">고객센터</a>
       </div>
-      <div class="site-info">
-        <p>광주광역시 서구 쌍촌동 한울직업전문학교 4층 402호</p>
-        <p>
+      <div>
+        <p class="site-info">광주광역시 서구 쌍촌동 한울직업전문학교 4층 402호</p>
+        <p class="copyright">
           copyright&copy; 2024 <span class="owner">couplay</span> all rights
           reserved
         </p>

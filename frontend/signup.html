@@ -11,7 +11,7 @@
       <div class="link-text">
         <a href="#">로그인</a>
         <a href="#">회원가입</a>
-        <a href="#">장바구니</a>
+        <a href="http://localhost:3000/bucket">장바구니</a>
         <a href="#">주문조회</a>
       </div>
       <div class="brand">
@@ -22,12 +22,17 @@
         <a href="#">sales</a>
         <a href="#">event</a>
       </div>
+      <div class="title">
+        <p class="text-big">join</p>
+        <p class="text-small">회원가입</p>
+      </div>
     </div>
     <!-- /.hearder -->
     <div class="main">
-      <form  method="post" action="http://localhost:3000/signup">
-        <div class="join-type">
-          <table>
+      <form  method="post" action="http://localhost:3000/signup" autocomplete="off" id="signup-form">
+        <div>
+          <table id="sign-table">
+            <caption>가입구분</caption>
             <tr>
               <th>회원구분</th>
               <td>
@@ -41,6 +46,7 @@
         </div>
         <div class="basic-info">
           <table>
+            <caption>기본정보</caption>
             <tr>
               <th>아이디</th>
               <td><input type="text" name="user_id" /></td>
@@ -59,7 +65,7 @@
             </tr>
             <tr>
               <th>sms수신여부</th>
-              <td><input type="checkbox" name="user_sms" value="y" checked /></td>
+              <td><input type="checkbox" name="user_sms" value="y" checked />수신함</td>
             </tr>
             <tr>
               <th>이메일</th>
@@ -71,8 +77,10 @@
             </tr> -->
           </table>
         </div>
-        <input type="submit" value="가입" />
-        <input type="reset" value="취소" />
+        <div>
+          <input type="submit" value="가입" />
+          <input type="reset" value="취소" />
+        </div>
       </form>
     </div>
     <!-- /.main -->
@@ -83,9 +91,9 @@
         <a href="#">이용안내</a>
         <a href="#">고객센터</a>
       </div>
-      <div class="site-info">
-        <p>광주광역시 서구 쌍촌동 한울직업전문학교 4층 402호</p>
-        <p>
+      <div>
+        <p class="site-info">광주광역시 서구 쌍촌동 한울직업전문학교 4층 402호</p>
+        <p class="copyright">
           copyright&copy; 2024 <span class="owner">couplay</span> all rights
           reserved
         </p>
